@@ -30,7 +30,6 @@ public class DownloadUtil {
         } catch (MalformedURLException e) {
             throw new DownloadException("无效的图片 URL: " + imageUrl, e);
         }
-
         if (fileName == null || fileName.isEmpty()) {
             String path = url.getPath();
             fileName = Paths.get(path).getFileName().toString();

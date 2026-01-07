@@ -36,3 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 downloads
+
+/src/main/resources/application-dev.yaml
+/src/test/resources/application-dev.yaml
