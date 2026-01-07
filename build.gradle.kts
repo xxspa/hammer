@@ -6,7 +6,7 @@ plugins {
 
 group = "com.newzhxu"
 version = "0.0.1-SNAPSHOT"
-description = "dowload"
+description = "hammer"
 
 java {
     toolchain {
@@ -26,6 +26,9 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    testImplementation("org.springframework.security:spring-security-test")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
