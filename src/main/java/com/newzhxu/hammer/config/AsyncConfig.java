@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 @Configuration
 @EnableAsync
 @Slf4j
-public class AsyncConfing {
+public class AsyncConfig {
     @Bean
     AsyncConfigurer asyncConfigurer(Executor taskExecutor) {
         return new AsyncConfigurer() {

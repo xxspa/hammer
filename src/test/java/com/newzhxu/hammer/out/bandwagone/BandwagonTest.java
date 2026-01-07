@@ -7,25 +7,25 @@ import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles("dev")
-class BandwagoneTest {
+class BandwagonTest {
     @Autowired
-    Bandwagone bandwagone;
+    Bandwagon bandwagon;
 
     @Test
     void start() {
-        String start = bandwagone.start();
+        String start = bandwagon.start();
         System.out.println(start);
     }
 
     @Test
     void stop() {
-        String stop = bandwagone.stop();
+        String stop = bandwagon.stop();
         System.out.println(stop);
     }
 
     @Test
     void basicShellExec() {
-        String pwd = bandwagone.basicShellExec("pwd");
+        String pwd = bandwagon.basicShellExec("pwd");
         System.out.println(pwd);
     }
 }

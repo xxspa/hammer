@@ -32,4 +32,13 @@ public class SwggerConfig {
                 .displayName("VPS相关接口")
                 .build();
     }
+
+    @Bean
+    GroupedOpenApi picGroupedOpenAPI() {
+        return GroupedOpenApi.builder()
+                .group("pic")
+                .pathsToMatch("/pic/**")
+                .displayName("图片相关接口")
+                .build();
+    }
 }

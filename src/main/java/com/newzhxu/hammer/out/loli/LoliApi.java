@@ -6,6 +6,6 @@ import org.springframework.web.service.annotation.HttpExchange;
 
 @HttpExchange("https://www.loliapi.com")
 public interface LoliApi {
-    @GetExchange("/acg")
-    LoliResult getRandomImage(@RequestParam String id, @RequestParam String type);
+    @GetExchange("acg")
+    LoliResult getRandomImage(@RequestParam(required = false) String id, @RequestParam String type);
 }

@@ -1,7 +1,7 @@
 package com.newzhxu.hammer.vps;
 
 import com.newzhxu.hammer.annotion.Log;
-import com.newzhxu.hammer.out.bandwagone.Bandwagone;
+import com.newzhxu.hammer.out.bandwagone.Bandwagon;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 public class VpsController {
-    private final Bandwagone bandwagone;
+    private final Bandwagon bandwagon;
 
-    public VpsController(Bandwagone bandwagone) {
-        this.bandwagone = bandwagone;
+    public VpsController(Bandwagon bandwagon) {
+        this.bandwagon = bandwagon;
     }
 
     @Log
 
     @GetMapping("start")
     public String startVps() {
-        return bandwagone.start();
+        return bandwagon.start();
     }
+
+
 }

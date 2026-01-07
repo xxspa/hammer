@@ -28,14 +28,14 @@ public class BandwagonConfig {
     }
 
     @Bean
-    public Bandwagone bandwagone() {
+    public Bandwagon bandwagone() {
         RestClient restClient = RestClient.builder()
                 .requestInterceptor(new AuthInterceptor())
 
                 .build();
         RestClientAdapter restClientAdapter = RestClientAdapter.create(restClient);
         return HttpServiceProxyFactory.builder()
-                .exchangeAdapter(restClientAdapter).build().createClient(Bandwagone.class);
+                .exchangeAdapter(restClientAdapter).build().createClient(Bandwagon.class);
     }
 
     class AuthInterceptor implements ClientHttpRequestInterceptor {

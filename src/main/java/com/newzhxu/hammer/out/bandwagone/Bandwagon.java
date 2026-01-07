@@ -5,7 +5,7 @@ import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
 
 @HttpExchange("https://api.64clouds.com/v1")
-public interface Bandwagone {
+public interface Bandwagon {
     @GetExchange("/start")
     String start();
 
