@@ -16,7 +16,7 @@ public class PictureController {
     }
 
 
-    @GetMapping("radom")
+    @GetMapping(value = "radom",produces = "image/jpeg")
     public StreamingResponseBody getRandomPic() {
         byte[] inputStream = pictureService.downloadRandom();
 

@@ -11,10 +11,20 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @Slf4j
 public class LoliConfig {
     @Bean
-    public LoliApi loliApi() {
-        org.springframework.web.client.RestClient restClient = RestClient.builder().build();
-        RestClientAdapter restClientAdapter = RestClientAdapter.create(restClient);
-        return HttpServiceProxyFactory.builder().exchangeAdapter(restClientAdapter).build().createClient(LoliApi.class);
+    RestClient.Builder restClientBuilder() {
+        return RestClient.builder()
+
+                .requestInterceptor((request, body, execution) -> execution.execute(request, body))
+                ;
+    }
+
+    @Bean
+    public LoliApi loliApi(RestClient.Builder restClientBuilder) {
+
+        RestClientAdapter restClientAdapter = RestClientAdapter.create(restClientBuilder.build());
+        return HttpServiceProxyFactory.builder().exchangeAdapter(restClientAdapter)
+                .build().createClient(LoliApi.class);
 
     }
+
 }

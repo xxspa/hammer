@@ -28,8 +28,8 @@ public class BandwagonConfig {
     }
 
     @Bean
-    public Bandwagon bandwagone() {
-        RestClient restClient = RestClient.builder()
+    public Bandwagon bandwagon(RestClient.Builder clientBuilder) {
+        RestClient restClient = clientBuilder
                 .requestInterceptor(new AuthInterceptor())
 
                 .build();
@@ -41,7 +41,7 @@ public class BandwagonConfig {
     class AuthInterceptor implements ClientHttpRequestInterceptor {
         @Override
         @NonNull
-        public ClientHttpResponse intercept(@NonNull HttpRequest request, byte @NonNull [] body, ClientHttpRequestExecution execution) throws IOException {
+        public ClientHttpResponse intercept(@NonNull HttpRequest request, byte @NonNull [] body, @NonNull ClientHttpRequestExecution execution) throws IOException {
             HttpRequest wrapped = new HttpRequestWrapper(request) {
                 @Override
                 @NonNull
