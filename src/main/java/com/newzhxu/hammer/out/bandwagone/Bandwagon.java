@@ -1,5 +1,6 @@
 package com.newzhxu.hammer.out.bandwagone;
 
+import com.newzhxu.hammer.out.bandwagone.result.StartR;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
@@ -7,7 +8,7 @@ import org.springframework.web.service.annotation.HttpExchange;
 @HttpExchange("https://api.64clouds.com/v1")
 public interface Bandwagon {
     @GetExchange("/start")
-    String start();
+    StartR start();
 
     @GetExchange("stop")
     String stop();

@@ -13,7 +13,7 @@ class BandwagonTest {
 
     @Test
     void start() {
-        String start = bandwagon.start();
+        var start = bandwagon.start();
         System.out.println(start);
     }
 
@@ -27,5 +27,11 @@ class BandwagonTest {
     void basicShellExec() {
         String pwd = bandwagon.basicShellExec("pwd");
         System.out.println(pwd);
+    }
+
+    @Test
+    void getLiveServiceInfo() {
+        String liveServiceInfo = bandwagon.getLiveServiceInfo();
+        System.out.println(liveServiceInfo);
     }
 }

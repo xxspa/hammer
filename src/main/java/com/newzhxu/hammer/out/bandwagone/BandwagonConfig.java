@@ -4,7 +4,9 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
@@ -15,6 +17,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 
 @Configuration
@@ -31,6 +34,40 @@ public class BandwagonConfig {
     public Bandwagon bandwagon(RestClient.Builder clientBuilder) {
         RestClient restClient = clientBuilder
                 .requestInterceptor(new AuthInterceptor())
+                .requestInterceptor((request, body, execution) -> {
+                    ClientHttpResponse response = execution.execute(request, body);
+
+
+                    return new ClientHttpResponse() {
+                        @Override
+                        public HttpStatusCode getStatusCode() throws IOException {
+                            return response.getStatusCode();
+                        }
+
+                        @Override
+                        public String getStatusText() throws IOException {
+                            return response.getStatusText();
+                        }
+
+                        @Override
+                        public void close() {
+                            response.close();
+                        }
+
+                        @Override
+                        public InputStream getBody() throws IOException {
+                            return response.getBody();
+                        }
+
+                        @Override
+                        public HttpHeaders getHeaders() {
+                            HttpHeaders httpHeaders = new HttpHeaders();
+                            httpHeaders.addAll(response.getHeaders());
+                            httpHeaders.set(HttpHeaders.CONTENT_TYPE, "application/json");
+                            return httpHeaders;
+                        }
+                    };
+                })
 
                 .build();
         RestClientAdapter restClientAdapter = RestClientAdapter.create(restClient);

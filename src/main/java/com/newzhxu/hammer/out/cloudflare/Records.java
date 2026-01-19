@@ -5,10 +5,7 @@ import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
 
 @HttpExchange
-public interface Zones {
-    @GetExchange("/zones")
-    String getZones();
-
-    @GetExchange("/zones/{zoneId}")
-    String zoneDetails(@PathVariable("zoneId") String zoneId);
+public interface Records {
+    @GetExchange("/zones/{zone_id}/dns_records")
+    String listDnsRecords(@PathVariable("zone_id") String zoneId);
 }

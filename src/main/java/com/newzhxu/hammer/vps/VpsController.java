@@ -21,7 +21,7 @@ public class VpsController {
 
     @GetMapping("start")
     public String startVps() {
-        return bandwagon.start();
+        return bandwagon.start().toString();
     }
 
 

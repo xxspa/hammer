@@ -8,5 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Data
 public class CloudflareProperties {
+    private String url = "https://api.cloudflare.com/client/v4";
     private String token;
 }
